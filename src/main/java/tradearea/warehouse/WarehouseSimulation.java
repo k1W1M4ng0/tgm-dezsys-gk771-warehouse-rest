@@ -15,7 +15,7 @@ public class WarehouseSimulation {
 	};
 	
 	public static final String[] productPrefixes = {
-		"Super", "Bio", "Turbo", ""
+		"Super ", "Bio ", "Turbo ", ""
 	};
 	
 	public static final String[] productNames = {
@@ -23,7 +23,7 @@ public class WarehouseSimulation {
 	};
 	
 	public static final String[] productSuffixes = {
-		"Max", "Plus", "Pro", "Gold", "Platinum", ""
+		" Max", " Plus", " Pro", " Gold", " Platinum", ""
 	};
 	
 	public static final String[] units = {
@@ -41,7 +41,8 @@ public class WarehouseSimulation {
 	private int getRandomInt( int inMinimum, int inMaximum ) {
 
 		double number = ( Math.random() * ( (inMaximum-inMinimum) )) + inMinimum; 
-		Long rounded = Math.round(number); 
+		Double rounded = Math.floor(number); 
+		System.out.println("random between " + inMinimum + "and " + inMaximum + ": " + rounded.intValue());
 		return rounded.intValue();
 
 	}
@@ -52,8 +53,8 @@ public class WarehouseSimulation {
 		
 		WarehouseData data = new WarehouseData();
 		data.setWarehouseID( inID );
-		data.setWarehouseName(city + building);
-		data.setWarehouseAddress(building + "straße" + getRandomInt(1, 100)
+		data.setWarehouseName(city + " " + building);
+		data.setWarehouseAddress(building + "straße " + getRandomInt(1, 100)
 			// 50% chance for house nr addon
 			+ (getRandomInt(0, 1) == 1 ? "" : ("/" + getRandomInt(1, 50))));
 		data.setWarehousePostalCode(city);
