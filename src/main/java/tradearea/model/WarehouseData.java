@@ -19,7 +19,7 @@ public class WarehouseData {
 	 * Constructor
 	 */
 	public WarehouseData() {
-		
+		this.productData = new ArrayList<>();
 		this.timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date());
 
 	}
@@ -109,6 +109,13 @@ public class WarehouseData {
 	
 	public void addProduct(Product p) {
 		this.productData.add(p);
+	}
+	
+	/**
+	 * @return the productData
+	 */
+	public ArrayList<Product> getProductData() {
+		return productData;
 	}
 	
 	/**
