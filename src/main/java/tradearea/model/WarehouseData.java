@@ -1,6 +1,7 @@
 package tradearea.model;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class WarehouseData {
@@ -10,7 +11,9 @@ public class WarehouseData {
 	private String warehouseAddress;
 	private String warehousePostalCode;
 	private String warehouseCity;
+	private String warehouseCountry;
 	private String timestamp;
+	private ArrayList<Product> productData;
 
 	/**
 	 * Constructor
@@ -81,6 +84,20 @@ public class WarehouseData {
 	public void setWarehouseCity(String warehouseCity) {
 		this.warehouseCity = warehouseCity;
 	}
+	
+	/**
+	 * @return the warehouseCountry
+	 */
+	public String getWarehouseCountry() {
+		return warehouseCountry;
+	}
+
+	/**
+	 * @param warehouseCountry the warehouseCountry to set
+	 */
+	public void setWarehouseCountry(String warehouseCountry) {
+		this.warehouseCountry = warehouseCountry;
+	}
 
 	public String getTimestamp() {
 		return timestamp;
@@ -89,7 +106,11 @@ public class WarehouseData {
 	public void setTimestamp(String timestamp) {
 		this.timestamp = timestamp;
 	}
-
+	
+	public void addProduct(Product p) {
+		this.productData.add(p);
+	}
+	
 	/**
 	 * Methods
 	 */
