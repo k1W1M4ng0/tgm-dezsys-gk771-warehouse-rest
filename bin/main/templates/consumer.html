@@ -20,7 +20,6 @@ $(document).ready(function() {
         $('#timestamp').append(data.timestamp);
 
         for(p of data.productData) {
-            console.log(p);
             var tr = $('<tr>');
             tr.append($('<td>').append(p.productID));
             tr.append($('<td>').append(p.productName));
