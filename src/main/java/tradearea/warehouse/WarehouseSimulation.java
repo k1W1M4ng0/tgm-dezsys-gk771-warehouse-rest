@@ -1,5 +1,7 @@
 package tradearea.warehouse;
 
+import java.util.Random;
+
 import tradearea.model.Product;
 import tradearea.model.WarehouseData;
 
@@ -30,21 +32,21 @@ public class WarehouseSimulation {
 		"s", "m", "kg", "A", "K", "mol", "cd"
 	};
 	
-	private double getRandomDouble( int inMinimum, int inMaximum ) {
-
-		double number = ( Math.random() * ( (inMaximum-inMinimum) )) + inMinimum; 
-		double rounded = Math.round(number * 100.0) / 100.0; 
-		return rounded;
-		
+	private Random rand;
+	
+	public WarehouseSimulation(String id) {
+		Long seed = 0L;
+		try {
+			seed = Long.parseLong(id);
+		}
+		catch(NumberFormatException ex) {
+			System.err.println(ex);
+		}
+		this.rand = new Random(seed);
 	}
 
 	private int getRandomInt( int inMinimum, int inMaximum ) {
-
-		double number = ( Math.random() * ( (inMaximum-inMinimum) )) + inMinimum; 
-		Double rounded = Math.floor(number); 
-		System.out.println("random between " + inMinimum + "and " + inMaximum + ": " + rounded.intValue());
-		return rounded.intValue();
-
+		return this.rand.nextInt(inMaximum-inMinimum) + inMinimum;
 	}
 	
 	public WarehouseData getData( String inID ) {

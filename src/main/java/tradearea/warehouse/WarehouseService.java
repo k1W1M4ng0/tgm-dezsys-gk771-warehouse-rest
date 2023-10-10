@@ -12,7 +12,7 @@ public class WarehouseService {
 
     public WarehouseData getWarehouseData( String inID ) {
     	
-    	WarehouseSimulation simulation = new WarehouseSimulation();
+    	WarehouseSimulation simulation = new WarehouseSimulation(inID);
         return simulation.getData( inID );
         
     }
