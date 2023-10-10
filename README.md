@@ -30,7 +30,22 @@ Später wurde das zufällige Generieren so geändert, dass ein *java.util.Random
 
 ### CORS
 
-Beim RequestController muss auch noch @CrossOrigin hinzugefügt werden, damit keine CORS Fehler passieren.
+Beim RestController muss auch noch @CrossOrigin hinzugefügt werden, damit keine CORS Fehler passieren.
+
+### RequestMapping
+
+Code Snippet:
+
+```java
+    @RequestMapping(value="/warehouse/{inID}/data", produces = MediaType.APPLICATION_JSON_VALUE)
+    public WarehouseData warehouseData( @PathVariable String inID ) {
+        return service.getWarehouseData( inID );
+    }
+```
+
+Hier gibt es eine PathVariable. Wenn man also `GET localhost:8080/warehouse/123/data` aufruft, dann wird "123" in den Parameter *inID* gespeichert.
+
+*produces* gibt das Datenformat an. In diesem Beispiel wird JSON angegeben, deswegen wird das von der Methode zurückgegebene WarehouseData automatisch in ein JSON Objekt umgewandelt.
 
 ## HTML Consumer Frontend
 
