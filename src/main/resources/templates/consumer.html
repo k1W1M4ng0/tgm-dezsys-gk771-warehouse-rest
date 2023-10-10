@@ -7,16 +7,47 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
+    var id = Math.floor(9999 * Math.random());
     $.ajax({
-        url: "http://localhost:8080/timingstation/001/json"
+        url: "http://localhost:8080/warehouse/" + id + "/data"
     }).then(function(data) {
-        $('#timingstationID').append(data.timingstationID);
+        $('#warehouseID').append(data.warehouseID);
+        $('#warehouseName').append(data.warehouseName);
+        $('#warehouseAddress').append(data.warehouseAddress);
+        $('#warehousePostalCode').append(data.warehousePostalCode);
+        $('#warehouseCity').append(data.warehouseCity);
+        $('#warehouseCountry').append(data.warehouseCountry);
         $('#timestamp').append(data.timestamp);
+
+        for(p of data.productData) {
+            console.log(p);
+            var tr = $('<tr>');
+            tr.append($('<td>').append(p.productID));
+            tr.append($('<td>').append(p.productName));
+            tr.append($('<td>').append(p.productCategory));
+            tr.append($('<td>').append(p.productQuantity));
+            tr.append($('<td>').append(p.productUnit));
+            $('#productData').append(tr);
+        }
     });
 });
 </script>
 <body>
-	<div id="timingstationID"></div>
+	<div id="warehouseID"></div>
+	<div id="warehouseName"></div>
+	<div id="warehouseAddress"></div>
+	<div id="warehousePostalCode"></div>
+	<div id="warehouseCity"></div>
+	<div id="warehouseCountry"></div>
 	<div id="timestamp"></div>
+    <table id="productData" border="1">
+        <tr>
+            <th>productID</th>
+            <th>productName</th>
+            <th>productCategory</th>
+            <th>productQuantity</th>
+            <th>productUnit</th>
+        </tr>
+    </table>
 </body>
 </html>
