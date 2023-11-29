@@ -1,6 +1,8 @@
 package tradearea.warehouse;
 
 import org.springframework.web.bind.annotation.RestController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +14,7 @@ import tradearea.model.WarehouseData;
 @RestController
 @CrossOrigin
 public class WarehouseController {
+    Logger logger = LoggerFactory.getLogger(WarehouseController.class);
 
     @Autowired
     private WarehouseService service;
@@ -27,6 +30,7 @@ public class WarehouseController {
 
     @RequestMapping(value="/warehouse/{inID}/data", produces = MediaType.APPLICATION_JSON_VALUE)
     public WarehouseData warehouseData( @PathVariable String inID ) {
+        logger.info(String.format("called /warehouse/%s/data"), inID);
         return service.getWarehouseData( inID );
     }
 
