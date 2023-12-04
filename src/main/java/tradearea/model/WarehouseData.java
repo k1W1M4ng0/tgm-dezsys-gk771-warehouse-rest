@@ -6,6 +6,7 @@ import java.util.Date;
 
 public class WarehouseData {
 	
+    private String warehouseApplicationID;
 	private String warehouseID;
 	private String warehouseName;
 	private String warehouseAddress;
@@ -21,7 +22,6 @@ public class WarehouseData {
 	public WarehouseData() {
 		this.productData = new ArrayList<>();
 		this.timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date());
-
 	}
 	
 	/**
@@ -31,7 +31,19 @@ public class WarehouseData {
 		return warehouseID;
 	}
 
-	public void setWarehouseID(String warehouseID) {
+	public String getWarehouseApplicationID() {
+        return warehouseApplicationID;
+    }
+
+    public void setWarehouseApplicationID(String warehouseApplicationID) {
+        this.warehouseApplicationID = warehouseApplicationID;
+    }
+
+    public void setProductData(ArrayList<Product> productData) {
+        this.productData = productData;
+    }
+
+    public void setWarehouseID(String warehouseID) {
 		this.warehouseID = warehouseID;
 	}
 

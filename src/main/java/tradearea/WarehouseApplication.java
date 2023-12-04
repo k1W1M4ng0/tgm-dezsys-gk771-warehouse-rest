@@ -12,12 +12,14 @@ public class WarehouseApplication {
     private static final Logger logger = LoggerFactory.getLogger(WarehouseApplication.class);
 
     public static int port = 8080;
+    public static String warehouseApplicationID = "warehouse8080";
 
 	public static void main(String[] args) {
         if(args.length > 0) {
             try {
                 port = Integer.parseInt(args[0]);
                 logger.info("Running on Port " + args[0]);
+                warehouseApplicationID = "warehouse" + port;
             }
             catch(NumberFormatException ex) {
                 logger.error("Arg0: " + args[0] + " couldnt be parsed, using 8080");

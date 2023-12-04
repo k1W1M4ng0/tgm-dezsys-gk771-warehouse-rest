@@ -2,6 +2,7 @@ package tradearea.warehouse;
 
 import java.util.Random;
 
+import tradearea.WarehouseApplication;
 import tradearea.model.Product;
 import tradearea.model.WarehouseData;
 
@@ -54,6 +55,7 @@ public class WarehouseSimulation {
 		String building = buildings[getRandomInt(0, buildings.length)];
 		
 		WarehouseData data = new WarehouseData();
+        data.setWarehouseApplicationID(WarehouseApplication.warehouseApplicationID);
 		data.setWarehouseID( inID );
 		data.setWarehouseName(city + " " + building);
 		data.setWarehouseAddress(building + "straße " + getRandomInt(1, 100)
