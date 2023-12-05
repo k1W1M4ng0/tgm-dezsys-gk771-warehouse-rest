@@ -37,6 +37,6 @@ public class WarehouseApplication {
             logger.info("no args entered, using port 8080");
             SpringApplication.run(WarehouseApplication.class);
         }
-        Receiver receiver = new Receiver(WarehouseApplication.warehouseApplicationID);
+        Receiver receiver = new Receiver("acknowledgements");
 	}
 }
