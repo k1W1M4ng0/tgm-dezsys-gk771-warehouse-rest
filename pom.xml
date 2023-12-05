@@ -11,8 +11,8 @@
 	<groupId>at.ac.tgm.student</groupId>
 	<artifactId>sgao</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>tgm-dezsys-gek772-warehouse-mom</name>
-	<description>Warehouse MOM</description>
+	<name>tgm-dezsys-gek771-warehouse-rest</name>
+	<description>Warehouse REST</description>
 	<properties>
 		<java.version>21</java.version>
 	</properties>
