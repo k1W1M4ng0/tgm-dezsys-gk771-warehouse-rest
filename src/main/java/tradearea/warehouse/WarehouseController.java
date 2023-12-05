@@ -40,14 +40,14 @@ public class WarehouseController {
 
         WarehouseData data = service.getWarehouseData(inID);
         logger.info(String.format("Sent message with warehouseID: %s", data.getWarehouseID()));
-        service.addSentMessage(data.getWarehouseID());
+        WarehouseService.addSentMessage(data.getWarehouseID());
 
         return data;
     }
 
     @GetMapping(value="/warehouse/activemessages") 
     public Set<String> activeMessages() {
-        return service.getActiveMessages();
+        return WarehouseService.getActiveMessages();
     }
 
     @RequestMapping(value="/warehouse/{inID}/xml", produces = MediaType.APPLICATION_XML_VALUE)

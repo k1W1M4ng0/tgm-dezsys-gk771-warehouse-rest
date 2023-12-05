@@ -44,7 +44,7 @@ public class Receiver {
             // Create the session
             // CLIENT_ACKNOWLEDGE to not ack everything, only the msg that are for this warehouse
             session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-            destination = session.createQueue( this.queue );
+            destination = session.createTopic( this.queue );
 
             consumer = session.createConsumer(destination);
 

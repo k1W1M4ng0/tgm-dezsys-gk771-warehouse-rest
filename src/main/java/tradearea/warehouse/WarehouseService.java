@@ -8,34 +8,30 @@ import tradearea.model.WarehouseData;
 
 @Service
 public class WarehouseService {
-    private Set<String> activeMessages;
-
-    public WarehouseService() {
-        this.activeMessages = new HashSet<>();
-    }
+    private static Set<String> activeMessages = new HashSet<>();
 
     /**
      * adds a message that has been sent
      * @param warehouseID
      */
-    public void addSentMessage(String warehouseID) {
-        this.activeMessages.add(warehouseID);
+    public static void addSentMessage(String warehouseID) {
+        activeMessages.add(warehouseID);
     }
 
     /**
      * acknowledge a message 
      * @param warehouseID
      */
-    public void acknowledgeSentMessage(String warehouseID) {
-        this.activeMessages.remove(warehouseID);
+    public static void acknowledgeSentMessage(String warehouseID) {
+        activeMessages.remove(warehouseID);
     }
 
     /**
      * get all messages that havent been acknowledged yet
      * @return
      */
-    public Set<String> getActiveMessages() {
-        return this.activeMessages;
+    public static Set<String> getActiveMessages() {
+        return activeMessages;
     }
 	
 	public String getGreetings( String inModule ) {
