@@ -1,10 +1,14 @@
 package tradearea.warehouse;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Set;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.http.MediaType;
@@ -33,7 +37,17 @@ public class WarehouseController {
     @RequestMapping(value="/warehouse/{inID}/data", produces = MediaType.APPLICATION_JSON_VALUE)
     public WarehouseData warehouseData( @PathVariable String inID ) {
         logger.info(String.format("called /warehouse/%s/data", inID));
-        return service.getWarehouseData( inID );
+
+        WarehouseData data = service.getWarehouseData(inID);
+        logger.info(String.format("Sent message with warehouseID: %s", data.getWarehouseID()));
+        service.addSentMessage(data.getWarehouseID());
+
+        return data;
+    }
+
+    @GetMapping(value="/warehouse/activemessages") 
+    public Set<String> activeMessages() {
+        return service.getActiveMessages();
     }
 
     @RequestMapping(value="/warehouse/{inID}/xml", produces = MediaType.APPLICATION_XML_VALUE)
