@@ -25,13 +25,14 @@ public class WarehouseController {
     	String mainPage = "This is the warehouse application! (DEZSYS_WAREHOUSE_REST) <br/><br/>" +
                           "<a href='http://localhost:" + WarehouseApplication.port + "/warehouse/001/data'>Link to warehouse/001/data</a><br/>" +
                           "<a href='http://localhost:" + WarehouseApplication.port + "/warehouse/001/xml'>Link to warehouse/001/xml</a><br/>" +
-                          "<a href='http://localhost:" + WarehouseApplication.port + "/warehouse/001/transfer'>Link to warehouse/001/transfer</a><br/>";
+                          "<a href='http://localhost:" + WarehouseApplication.port + "/warehouse/001/transfer'>Link to warehouse/001/transfer</a><br/>" +
+                          "<a href='http://localhost:" + WarehouseApplication.port + "/warehouse/activemessages'>Link to get the sent messages that were not accepted</a><br/>";
         return mainPage;
     }
 
     @RequestMapping(value="/warehouse/{inID}/data", produces = MediaType.APPLICATION_JSON_VALUE)
     public WarehouseData warehouseData( @PathVariable String inID ) {
-        logger.info(String.format("called /warehouse/%s/data"), inID);
+        logger.info(String.format("called /warehouse/%s/data", inID));
         return service.getWarehouseData( inID );
     }
 
