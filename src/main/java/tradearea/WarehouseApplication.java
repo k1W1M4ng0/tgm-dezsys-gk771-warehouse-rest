@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import tradearea.warehouse.Receiver;
+
 @SpringBootApplication
 public class WarehouseApplication {
     private static final Logger logger = LoggerFactory.getLogger(WarehouseApplication.class);
@@ -35,5 +37,6 @@ public class WarehouseApplication {
             logger.info("no args entered, using port 8080");
             SpringApplication.run(WarehouseApplication.class);
         }
+        Receiver receiver = new Receiver(WarehouseApplication.warehouseApplicationID);
 	}
 }
